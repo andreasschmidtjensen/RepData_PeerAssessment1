@@ -85,6 +85,7 @@ abline(v = median(per_day$steps), lwd=3, col="red")
 ```
 
 ![](PA1_template_files/figure-html/histogram_-_per_day-1.png)<!-- -->
+
 We see that the median seems to be at around 10000 steps (actually plotted as the red line).
 
 We calculate the mean and median total number of steps taken per day:
@@ -115,6 +116,7 @@ ggplot(per_interval, aes(x = interval, y = steps), xlab="Interval", ylab="Averag
 ```
 
 ![](PA1_template_files/figure-html/average_within_day-1.png)<!-- -->
+
 We see a peak just before 9:00, but we can extract the actual interval using `which.max`:
 
 ```r

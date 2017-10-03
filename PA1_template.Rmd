@@ -38,6 +38,7 @@ per_day <- na.omit(df) %>% group_by(date) %>% summarise(steps = sum(steps))
 hist(per_day$steps, breaks=20)
 abline(v = median(per_day$steps), lwd=3, col="red")
 ```
+
 We see that the median seems to be at around 10000 steps (actually plotted as the red line).
 
 We calculate the mean and median total number of steps taken per day:
@@ -53,6 +54,7 @@ This data can then be plotted to show the average daily activity pattern.
 per_interval <- na.omit(df) %>% group_by(interval) %>% summarise(steps = mean(steps))
 ggplot(per_interval, aes(x = interval, y = steps), xlab="Interval", ylab="Average number of steps") + geom_line() + scale_x_chron(format="%H:%M", n = 10)
 ```
+
 We see a peak just before 9:00, but we can extract the actual interval using `which.max`:
 ```{r max interval}
 per_interval[which.max(per_interval$steps),]
