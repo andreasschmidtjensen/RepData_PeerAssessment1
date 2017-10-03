@@ -84,7 +84,7 @@ hist(per_day$steps, breaks=20)
 abline(v = median(per_day$steps), lwd=3, col="red")
 ```
 
-![](PA1_template_files/figure-html/histogram - per day-1.png)<!-- -->
+![](PA1_template_files/figure-html/histogram_-_per_day-1.png)<!-- -->
 We see that the median seems to be at around 10000 steps (actually plotted as the red line).
 
 We calculate the mean and median total number of steps taken per day:
@@ -114,7 +114,7 @@ per_interval <- na.omit(df) %>% group_by(interval) %>% summarise(steps = mean(st
 ggplot(per_interval, aes(x = interval, y = steps), xlab="Interval", ylab="Average number of steps") + geom_line() + scale_x_chron(format="%H:%M", n = 10)
 ```
 
-![](PA1_template_files/figure-html/average within day-1.png)<!-- -->
+![](PA1_template_files/figure-html/average_within_day-1.png)<!-- -->
 We see a peak just before 9:00, but we can extract the actual interval using `which.max`:
 
 ```r
@@ -178,7 +178,7 @@ hist(per_day$steps,  breaks = 20)
 abline(v = median(per_day$steps), lwd=3, col="red")
 ```
 
-![](PA1_template_files/figure-html/histogram - imputed-1.png)<!-- -->
+![](PA1_template_files/figure-html/histogram_-_imputed-1.png)<!-- -->
 
 We see that the median seem to be around the same value as before, but we can calcuate both the median and the mean:
 
@@ -219,7 +219,7 @@ ggplot(per_interval, aes(x = interval, y = steps), xlab="Interval", ylab="Averag
   facet_grid(weekday ~ .)
 ```
 
-![](PA1_template_files/figure-html/plot panel for weekday and weekend-1.png)<!-- -->
+![](PA1_template_files/figure-html/plot_panel_for_weekday_and_weekend-1.png)<!-- -->
 
 We see that the peak for weekends is lower, but the mean seems to be higher, which we can verify:
 

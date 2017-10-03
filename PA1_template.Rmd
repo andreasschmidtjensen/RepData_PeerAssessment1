@@ -33,7 +33,7 @@ summary(df)
 
 ## What is mean total number of steps taken per day?
 First, we create a histogram of the total number of steps taken per day. We ignore any missing values.
-```{r histogram - per day}
+```{r histogram_-_per_day}
 per_day <- na.omit(df) %>% group_by(date) %>% summarise(steps = sum(steps))
 hist(per_day$steps, breaks=20)
 abline(v = median(per_day$steps), lwd=3, col="red")
@@ -49,7 +49,7 @@ median(per_day$steps)
 ## What is the average daily activity pattern?
 We group the data by each 5-minute interval and calculate the average number of steps for each interval. We ignore any missing values.
 This data can then be plotted to show the average daily activity pattern.
-```{r average within day}
+```{r average_within_day}
 per_interval <- na.omit(df) %>% group_by(interval) %>% summarise(steps = mean(steps))
 ggplot(per_interval, aes(x = interval, y = steps), xlab="Interval", ylab="Average number of steps") + geom_line() + scale_x_chron(format="%H:%M", n = 10)
 ```
@@ -86,7 +86,7 @@ sum(is.na(df.imputed))
 
 ### Histogram - imputed values
 We can create a histogram for the imputed values, to see what the imputation does to the distribution.
-```{r histogram - imputed}
+```{r histogram_-_imputed}
 per_day <- df.imputed %>% group_by(date) %>% summarise(steps = sum(steps))
 hist(per_day$steps,  breaks = 20)
 abline(v = median(per_day$steps), lwd=3, col="red")
@@ -109,7 +109,7 @@ df.imputed$weekday <- factor((weekdays(df.imputed$date) %in% wds), levels=c(F, T
 
 We can then create a panel plot to see if there are any differences in the activity patterns.
 
-```{r plot panel for weekday and weekend}
+```{r plot_panel_for_weekday_and_weekend}
 per_interval <- df.imputed %>% group_by_at(vars(interval, weekday)) %>% summarise(steps = mean(steps))
 ggplot(per_interval, aes(x = interval, y = steps), xlab="Interval", ylab="Average number of steps") + 
   geom_line() + 
